@@ -120,12 +120,17 @@ def scene_photo(path):
     return Image.composite(gray, Image.new("L", gray.size, 0), mask)
 
 
-def dither_path(pil):
-    """Floyd–Steinberg (serpentine via Pillow) → one short stroke per lit cell."""
+def dither_groups(pil, rng, size=40):
+    """Floyd–Steinberg (via Pillow) → lit cells shuffled into small groups of short strokes."""
     bits = np.array(pil.convert("1"), dtype=bool)
     ys, xs = np.nonzero(bits)
-    segs = [f"M{MAP_X + x * CELL:.1f} {MAP_Y + y * CELL:.1f}h{CELL * .8:.1f}" for y, x in zip(ys, xs)]
-    return "".join(segs), len(segs)
+    order = rng.permutation(len(xs))
+    groups = []
+    for k in range(0, len(order), size):
+        idx = order[k:k + size]
+        d = "".join(f"M{MAP_X + xs[q] * CELL:.1f} {MAP_Y + ys[q] * CELL:.1f}h{CELL * .8:.1f}" for q in idx)
+        groups.append((d, len(idx)))
+    return groups
 
 
 def render(theme, scenes):
@@ -164,25 +169,39 @@ def render(theme, scenes):
     # dithered scenes: cycle after boot
     n, period, start = len(scenes), 5.0 * len(scenes), 3.2
     total_pts = 0
+    rng = np.random.default_rng(11)
     out.append('<g clip-path="url(#map)">')
     for i, (label, pil) in enumerate(scenes):
         if theme == "light" and label.startswith("portrait"):
             # dark dots on a light card: shade the person, keep the backdrop empty
             a = np.asarray(pil).astype(int)
             pil = Image.fromarray(np.where(a > 0, 256 - a, 0).astype("uint8"))
-        d, cnt = dither_path(pil)
-        total_pts += cnt
-        # fade in over [a, a+f], hold, fade out over [b-f, b]
-        a, b, f = i / n, (i + 1) / n, 0.6 / period
-        key, val = [a, a + f, b - f, b], ["0", "1", "1", "0"]
-        if a > 0:
-            key, val = [0] + key, ["0"] + val
-        if b < 1:
-            key, val = key + [1], val + ["0"]
-        out.append(f'<g opacity="0"><animate attributeName="opacity" begin="{start}s" dur="{period}s" repeatCount="indefinite" '
-                   f'keyTimes="{";".join(f"{k:.4f}" for k in key)}" values="{";".join(val)}"/>'
-                   f'<path d="{d}" fill="none" stroke="{t["dots"]}" stroke-width="{CELL * .8:.1f}" opacity=".92"/>'
-                   f'<text x="438" y="551" text-anchor="end" font-size="11" fill="{t["accent"]}">{esc(label)}</text></g>')
+        groups = dither_groups(pil, rng)
+        total_pts += sum(c for _, c in groups)
+        a, b = i / n, (i + 1) / n
+        tf, jit = 0.7 / period, 0.6 / period  # transition length, per-group stagger
+        out.append('<g>')
+        for d, _ in groups:
+            # each particle group drifts in from a random offset and later scatters out
+            j_in, j_out = rng.uniform(0, jit), rng.uniform(0, jit)
+            t1 = a + j_in; t2 = t1 + tf; t4 = b - j_out; t3 = t4 - tf
+            dx1, dy1, dx2, dy2 = rng.normal(0, 7, 4)
+            key = [0, t1, t2, t3, t4, 1] if t1 > 0 else [0, t2, t3, t4, 1]
+            op = ["0", "0", ".92", ".92", "0", "0"][-len(key):]
+            mv = [f"{dx1:.1f} {dy1:.1f}", f"{dx1:.1f} {dy1:.1f}", "0 0", "0 0", f"{dx2:.1f} {dy2:.1f}",
+                  f"{dx2:.1f} {dy2:.1f}"][-len(key):]
+            kt = ";".join(f"{min(max(k, 0), 1):.4f}" for k in key)
+            out.append(f'<path d="{d}" fill="none" stroke="{t["dots"]}" stroke-width="{CELL * .8:.1f}" opacity="0">'
+                       f'<animate attributeName="opacity" begin="{start}s" dur="{period}s" repeatCount="indefinite" keyTimes="{kt}" values="{";".join(op)}"/>'
+                       f'<animateTransform attributeName="transform" type="translate" begin="{start}s" dur="{period}s" repeatCount="indefinite" keyTimes="{kt}" values="{";".join(mv)}"/></path>')
+        # label follows the scene
+        lk = [0, a, a + tf, b - tf, b, 1]
+        lv = ["0", "0", "1", "1", "0", "0"]
+        if a == 0:
+            lk, lv = lk[1:], lv[1:]
+        out.append(f'<text x="438" y="551" text-anchor="end" font-size="11" fill="{t["accent"]}" opacity="0">{esc(label)}'
+                   f'<animate attributeName="opacity" begin="{start}s" dur="{period}s" repeatCount="indefinite" '
+                   f'keyTimes="{";".join(f"{k:.4f}" for k in lk)}" values="{";".join(lv)}"/></text></g>')
     out.append(f'<rect x="49" y="{MAP_Y - 40}" width="390" height="40" fill="url(#scan)" opacity="0">'
                f'<animate attributeName="opacity" begin="{start}s" dur=".01s" values="0;1" fill="freeze"/>'
                f'<animate attributeName="y" begin="{start}s" dur="3.5s" values="{MAP_Y - 40};{MAP_Y + 410}" repeatCount="indefinite"/></rect>')
