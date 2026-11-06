@@ -31,6 +31,7 @@ I turn raw data into decisions: clean pipelines underneath, clear visuals on top
 - 🎓 **BI & Data Analytics @ La Salle URL**, graduating June 2028.
 - 🏗️ Building **medallion pipelines** (bronze → silver → gold) with **SQL, DuckDB and Databricks**.
 - 📊 Analysis and ML with **pandas, scikit-learn and ARIMA**; dashboards in **Power BI**; plots with **ggplot2 and seaborn**.
+- 🧠 Building **neural networks from scratch in NumPy** (backpropagation, Leaky ReLU, mini-batches) and deciding under uncertainty with **Monte Carlo simulation**.
 - 🤖 Experimenting with **local LLM pipelines**: vision → text → speech, fully offline.
 - 📜 **IBM Data Analyst** · **Google Data Analytics Specialization**.
 - 🌍 Spanish (native) · English (C2) · Catalan (C1).
@@ -51,11 +52,15 @@ I turn raw data into decisions: clean pipelines underneath, clear visuals on top
 <code><img title="DuckDB" alt="DuckDB" height="26" src="https://cdn.simpleicons.org/duckdb/FFC107"></code>&nbsp;
 <code><img title="Databricks" alt="Databricks" height="26" src="https://cdn.simpleicons.org/databricks/FF3621"></code>&nbsp;
 <code><img title="n8n" alt="n8n" height="26" src="https://cdn.simpleicons.org/n8n/EA4B71"></code>&nbsp;
-<code><img title="polars" alt="polars" height="26" src="https://cdn.simpleicons.org/polars/2DD4BF"></code>
+<code><img title="polars" alt="polars" height="26" src="https://cdn.simpleicons.org/polars/2DD4BF"></code>&nbsp;
+<code><img title="NumPy" alt="NumPy" height="26" src="https://cdn.simpleicons.org/numpy/4DABCF"></code>&nbsp;
+<code><img title="PyTorch" alt="PyTorch" height="26" src="https://cdn.simpleicons.org/pytorch/EE4C2C"></code>
 
 ### core skills
 
 ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-0d1117?style=for-the-badge)
+![Neural Networks](https://img.shields.io/badge/Neural%20Networks-0d1117?style=for-the-badge)
+![Monte Carlo Simulation](https://img.shields.io/badge/Monte%20Carlo%20Simulation-0d1117?style=for-the-badge)
 ![Time-Series Forecasting](https://img.shields.io/badge/Time--Series%20Forecasting-0d1117?style=for-the-badge)
 ![ETL & Data Pipelines](https://img.shields.io/badge/ETL%20%26%20Data%20Pipelines-0d1117?style=for-the-badge)
 ![SQL & Databases](https://img.shields.io/badge/SQL%20%26%20Databases-0d1117?style=for-the-badge&logo=postgresql&logoColor=2DD4BF)
@@ -72,9 +77,9 @@ I turn raw data into decisions: clean pipelines underneath, clear visuals on top
 |:--|:--|
 | ✂️ **[SnipScout](https://github.com/datamauriciovaldez/SnipScout)** | Turns long videos into vertical short clips with word-by-word subtitles, 100% local: ranks the best moments, follows the speaker's face, editable before export. `Python` `local AI` `ES/EN UI` |
 | 🥜 **La PistacherIA** | Personal Kanban that turns natural-language notes into cards with priority, date and tags, plus a chat assistant (Pistachito). Runs in the browser, no accounts or servers. `TypeScript` `local AI` |
-| 🎙️ **local-ai-football-narrator** | Football footage → frames → captions → commentary → voice, with 100% local inference. `Python` `polars` `Gemma` `Qwen` `OmniVoice` |
+| 🎙️ **local-ai-football-narrator** | Football footage → frames → captions → commentary → voice, with 100% local inference: 3 local models, 0 cloud calls, and a measured look at how well they follow prompt limits. With Mael Baudran & Javier Gonzalo. `Python` `polars` `Gemma` `Qwen` `OmniVoice` |
 | 📈 **sales-performance-eda** | 9,994 retail order lines: Technology earns ~9× the profit per line of Furniture. `pandas` `seaborn` |
-| 🧠 **Neural Networks, Monte Carlo & Image Recognition** | Neural networks coded from scratch in NumPy: Titanic survival and handwritten digits (97.6% test accuracy on MNIST), plus a 100,000-run Monte Carlo simulation to pick a customer-support strategy. `Python` `NumPy` `Monte Carlo` |
+| 🧠 **Neural Networks, Monte Carlo & Image Recognition** | A decision-analysis project in three parts: a 100,000-run Monte Carlo simulation to choose a customer-support strategy, then neural networks coded from scratch in NumPy, first for Titanic survival (78.3% vs 72.4% for a linear baseline) and then for handwritten digits (97.6% test accuracy on MNIST). With Javier Gonzalo. `Python` `NumPy` `Monte Carlo` |
 | 🏗️ **barcelona-data-pipeline** · *coming soon* | Medallion pipeline over Barcelona municipal open data. `SQL` `Databricks` |
 | 🚀 **venture-capital-ml** · *coming soon* | Predicting startup success to support VC investment decisions. `Python` `scikit-learn` |
 
