@@ -70,8 +70,8 @@ I turn raw data into decisions: clean pipelines underneath, clear visuals on top
 
 | Project | What it does |
 |:--|:--|
-| 🎙️ **[local-ai-video-analysis-pipeline](https://github.com/datamauriciovaldez/local-ai-video-analysis-pipeline)** | Football footage → frames → captions → script → voice, with 100% local inference. `Python` `polars` `Gemma` `Qwen` `OmniVoice` |
-| 📈 **[sales-performance-eda](https://github.com/datamauriciovaldez/sales-performance-eda)** | 9,994 retail order lines: Technology earns ~9× the profit per line of Furniture. `pandas` `seaborn` |
+| 🎙️ **local-ai-video-analysis-pipeline** | Football footage → frames → captions → script → voice, with 100% local inference. `Python` `polars` `Gemma` `Qwen` `OmniVoice` |
+| 📈 **sales-performance-eda** | 9,994 retail order lines: Technology earns ~9× the profit per line of Furniture. `pandas` `seaborn` |
 | 🏗️ **barcelona-data-pipeline** · *coming soon* | Medallion pipeline over Barcelona municipal open data. `SQL` `Databricks` |
 | 🚀 **venture-capital-ml** · *coming soon* | Predicting startup success to support VC investment decisions. `Python` `scikit-learn` |
 
