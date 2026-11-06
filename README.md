@@ -53,6 +53,17 @@ I turn raw data into decisions: clean pipelines underneath, clear visuals on top
 <code><img title="n8n" alt="n8n" height="26" src="https://cdn.simpleicons.org/n8n/EA4B71"></code>&nbsp;
 <code><img title="polars" alt="polars" height="26" src="https://cdn.simpleicons.org/polars/2DD4BF"></code>
 
+### core skills
+
+![Machine Learning](https://img.shields.io/badge/Machine%20Learning-0d1117?style=for-the-badge)
+![Time-Series Forecasting](https://img.shields.io/badge/Time--Series%20Forecasting-0d1117?style=for-the-badge)
+![ETL & Data Pipelines](https://img.shields.io/badge/ETL%20%26%20Data%20Pipelines-0d1117?style=for-the-badge)
+![SQL & Databases](https://img.shields.io/badge/SQL%20%26%20Databases-0d1117?style=for-the-badge&logo=postgresql&logoColor=2DD4BF)
+![Big Data (Spark)](https://img.shields.io/badge/Big%20Data%20(Spark)-0d1117?style=for-the-badge&logo=apachespark&logoColor=2DD4BF)
+![Data Visualization (Power BI)](https://img.shields.io/badge/Data%20Visualization%20(Power%20BI)-0d1117?style=for-the-badge)
+![Digital Analytics](https://img.shields.io/badge/Digital%20Analytics-0d1117?style=for-the-badge)
+![Market Research](https://img.shields.io/badge/Market%20Research-0d1117?style=for-the-badge)
+
 ## featured work
 
 </div>
