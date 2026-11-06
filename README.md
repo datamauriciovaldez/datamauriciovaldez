@@ -72,7 +72,7 @@ I turn raw data into decisions: clean pipelines underneath, clear visuals on top
 |:--|:--|
 | ✂️ **[SnipScout](https://github.com/datamauriciovaldez/SnipScout)** | Turns long videos into vertical short clips with word-by-word subtitles, 100% local: ranks the best moments, follows the speaker's face, editable before export. `Python` `local AI` `ES/EN UI` |
 | 🥜 **La PistacherIA** | Personal Kanban that turns natural-language notes into cards with priority, date and tags, plus a chat assistant (Pistachito). Runs in the browser, no accounts or servers. `TypeScript` `local AI` |
-| 🎙️ **local-ai-video-analysis-pipeline** | Football footage → frames → captions → script → voice, with 100% local inference. `Python` `polars` `Gemma` `Qwen` `OmniVoice` |
+| 🎙️ **local-ai-football-narrator** | Football footage → frames → captions → commentary → voice, with 100% local inference. `Python` `polars` `Gemma` `Qwen` `OmniVoice` |
 | 📈 **sales-performance-eda** | 9,994 retail order lines: Technology earns ~9× the profit per line of Furniture. `pandas` `seaborn` |
 | 🏗️ **barcelona-data-pipeline** · *coming soon* | Medallion pipeline over Barcelona municipal open data. `SQL` `Databricks` |
 | 🚀 **venture-capital-ml** · *coming soon* | Predicting startup success to support VC investment decisions. `Python` `scikit-learn` |
